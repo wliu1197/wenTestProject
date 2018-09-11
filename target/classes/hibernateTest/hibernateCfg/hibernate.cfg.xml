@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+
+        <!-- Assume test is the database name -->
+        <property name="hibernate.connection.url">
+            jdbc:postgresql://db-1.dev.netregistry.net/automation2
+        </property>
+        <property name="hibernate.connection.username">
+            automation
+        </property>
+        <property name="hibernate.connection.password">
+            {n0P41nN0G41n}
+        </property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <!--<property name="show_sql">true</property>-->
+
+        <!--List of XML mapping files-->
+        <mapping resource="hibernateTest/hibernateMappings/Domain.hbm.xml"/>
+        <mapping resource="hibernateTest/hibernateMappings/UserDetails.hbm.xml"/>
+        <mapping resource="hibernateTest/hibernateMappings/BillingAccount.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

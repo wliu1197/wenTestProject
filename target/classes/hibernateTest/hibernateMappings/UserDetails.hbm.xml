@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="hibernateTest.Module.UserDetails" table="users" lazy="false">
+    <id name="userId" column="user_id" type="long">
+        <generator class="sequence">
+            <param name="sequence">user_id_sequence</param>
+        </generator>
+    </id>
+    <property name="organisation" column="organisation" type="string"/>
+    <property name="title" column="title" type="string"/>
+    <property name="firstName" column="first_name" type="string"/>
+    <property name="lastName" column="last_name" type="string"/>
+    <property name="address1" column="address1" type="string"/>
+    <property name="address2" column="address2" type="string"/>
+    <property name="address3" column="address3" type="string"/>
+    <property name="address4" column="address4" type="string"/>
+    <property name="city" column="city" type="string"/>
+    <property name="state" column="state" type="string"/>
+    <property name="postcode" column="postcode" type="string"/>
+    <property name="country" column="country" type="string"/>
+    <property name="phone" column="phone" type="string"/>
+    <property name="fax" column="fax" type="string"/>
+    <property name="mobile" column="mobile" type="string"/>
+    <property name="email" column="email" type="string"/>
+    <property name="secondaryEmail" column="secondary_email" type="string"/>
+    <property name="url" column="url" type="string"/>
+    <property name="created" column="created" type="java.util.Date"/>
+    <property name="modified" column="modified" type="java.util.Date"/>
+    <property name="marketing" column="marketing" type="java.lang.Boolean"/>
+    <property name="resellerClient" column="reseller_client" type="java.lang.Boolean"/>
+    <property name="jobTitle" column="job_title" type="string"/>
+    <property name="accountId" column="company_id" type="java.lang.Long"/>
+    <property name="pdUserId" column="pd_user_id" type="string"/>
+</class>
+
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+<class name="hibernateTest.Module.Domain" table="domain" lazy="false">
+    <id name="domainId" type="long" column="domain_id">
+        <!-- need to fix id generator by adding sequences to tables -->
+        <generator class="sequence">
+            <param name="sequence">domain_id_sequence</param>
+        </generator>
+    </id>
+    <property name="domain" column="domain" type="string"/>
+
+    <component name="datesInfo" class="hibernateTest.Module.DatesInfo">
+        <property name="cancelled" column="cancelled" type="timestamp"/>
+        <property name="created" column="created" type="timestamp"/>
+        <property name="modified" column="modified" type="timestamp"/>
+        <property name="expire" column="expire" type="timestamp"/>
+        <property name="suspended" column="suspended" type="timestamp"/>
+    </component>
+
+    <property name="suspensionReason" column="suspension_reason" type="string"/>
+    <property name="suspendedBy" column="suspended_by" type="string"/>
+    <property name="eligibilityType" column="eligibility_type" type="string"/>
+    <property name="categoryTag" column="category_tag" type="string"/>
+    <property name="acquiredTag" column="acquired_tag" type="string"/>
+    <property name="autoRenew" column="auto_renew" type="boolean"/>
+    <property name="virtualisationId" column="virtualisation_id" type="long"/>
+    <many-to-one name="techUser" cascade="all" fetch="join" column="tech_id" class="hibernateTest.Module.UserDetails"/>
+</class>
+
+
+
+<query name="findDomainByDomainName">from Domain d where d.domain = ? and d.datesInfo.cancelled is null</query>
+<query name="findDomainCraetedBy2016">from Domain d where d.datesInfo.created > '2016-01-01'</query>
+</hibernate-mapping>
